@@ -1,11 +1,15 @@
 import React from 'react';
 import './App.css';
+import bannerImage from './assets/Banner.jpg'; // Importação da imagem correta
 
 function App() {
   return (
     <div>
       {/* Header */}
-      <header className="header">
+      <header
+        className="header"
+        style={{ backgroundImage: `url(${bannerImage})` }}
+      >
         <div className="branding">
           <h1 className="adx">ADX</h1>
           <h2 className="asso">Associação Itabirana de Xadrez</h2>
