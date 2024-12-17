@@ -1,79 +1,90 @@
 import React from 'react';
 import './App.css';
-import bannerImage from './assets/Banner.jpg'; // Importação da imagem correta
 
 function App() {
   return (
     <div>
       {/* Header */}
-      <header
-        className="header"
-        style={{ backgroundImage: `url(${bannerImage})` }}
-      >
+      <header className="header" style={{ backgroundImage: "url('/assets/Banner.jpg')" }}>
         <div className="branding">
-          <h1 className="adx">ADX</h1>
-          <h2 className="asso">Associação Itabirana de Xadrez</h2>
+          <img src="/assets/logo.png" alt="Logo" className="logo" />
+          <h1>ADX</h1>
+          <h2>Associação Itabirana de Damas e Xadrez</h2>
         </div>
-        <div className="social-icons">
-          <a href="https://www.instagram.com" target="_blank" rel="noreferrer">
-            <img src="/iconos/instagram.png" alt="Instagram" />
-          </a>
-          <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
-            <img src="/iconos/ficon.png" alt="Facebook" />
-          </a>
-        </div>
+        <nav className="menu">
+          <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#novidades">Novidades</a></li>
+            <li><a href="#galeria">Galeria</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#cadastro">Cadastro</a></li>
+            <li><a href="#quem-somos">Quem Somos</a></li>
+          </ul>
+        </nav>
       </header>
 
-      {/* Menu */}
-      <nav className="menu">
-        <ul>
-          <li><a href="#inicio">Início</a></li>
-          <li><a href="#destaques">Novidades</a></li>
-          <li><a href="#galeria">Galeria</a></li>
-          <li><a href="#projetos">Projetos</a></li>
-          <li><a href="#quem-somos">Quem Somos</a></li>
-        </ul>
-      </nav>
-
       {/* Destaques */}
-      <section id="destaques" className="section">
-        <h1 className="titulo">Destaques</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum enim placeat accusantium quas sequi.</p>
-        <img src="/destaques/destaque.jpg" alt="Destaque" />
+      <section id="novidades" className="section destaque">
+        <h2>Torneio de Iniciantes</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <img src="/assets/torneio.png" alt="Torneio de Iniciantes" />
       </section>
 
       {/* Galeria */}
       <section id="galeria" className="section">
-        <h1 className="titulo">Galeria de Fotos</h1>
+        <h2>Galeria de Fotos</h2>
         <div className="gallery">
-          <img src="/galeria/galeria4.png" alt="Atividade 1" />
-          <img src="/galeria/galeria4.png" alt="Atividade 2" />
-          <img src="/galeria/galeria4.png" alt="Atividade 3" />
-          <img src="/galeria/galeria4.png" alt="Atividade 4" />
+          <img src="/assets/galeria1.jpg" alt="Galeria 1" />
+          <img src="/assets/galeria2.jpg" alt="Galeria 2" />
+          <img src="/assets/galeria3.jpg" alt="Galeria 3" />
+          <img src="/assets/galeria4.png" alt="Galeria 4" />
         </div>
+      </section>
+
+      {/* Projetos */}
+      <section id="projetos" className="section projetos">
+        <h2>Projetos ADX</h2>
+        <div className="projetos-container">
+          <div className="projeto-item">
+            <img src="/assets/projeto1.jpg" alt="Projeto 1" />
+            <h3>Projeto 1</h3>
+            <p>Descrição do projeto 1.</p>
+          </div>
+          <div className="projeto-item">
+            <img src="/assets/projeto2.jpg" alt="Projeto 2" />
+            <h3>Projeto 2</h3>
+            <p>Descrição do projeto 2.</p>
+          </div>
+          <div className="projeto-item">
+            <img src="/assets/projeto3.jpg" alt="Projeto 3" />
+            <h3>Projeto 3</h3>
+            <p>Descrição do projeto 3.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Cadastro */}
+      <section id="cadastro" className="section cadastro">
+        <h2>Cadastro de Alunos</h2>
+        <form>
+          <input type="text" placeholder="Nome" />
+          <input type="email" placeholder="Email" />
+          <input type="text" placeholder="Celular" />
+          <button type="submit">CADASTRE-SE</button>
+        </form>
       </section>
 
       {/* Quem Somos */}
       <section id="quem-somos" className="section quem-somos">
-        <h1>Quem Somos</h1>
-        <div className="subsecao">
-          <h2>Crença</h2>
-          <p>Lorem ipsum dolor sit amet consectetur.</p>
-        </div>
-        <div className="subsecao">
-          <h2>Valores</h2>
-          <p>Lorem ipsum dolor sit amet consectetur.</p>
-        </div>
-        <div className="subsecao">
-          <h2>Missão</h2>
-          <p>Lorem ipsum dolor sit amet consectetur.</p>
-        </div>
+        <h2>Quem Somos</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
       </section>
 
       {/* Footer */}
-      <footer className="footer">
-        <p>Associação Itabirana de Damas e Xadrez; 2024. Todos os direitos reservados.</p>
-        <p>Desenvolvido por Félix Velotto</p>
+      <footer className="footer" style={{ backgroundImage: "url('/assets/chessboard.jpg')" }}>
+        <img src="/assets/logo.png" alt="Logo" className="footer-logo" />
+        <p>Associação Itabirana de Damas e Xadrez</p>
+        <p>Todos os direitos reservados.</p>
       </footer>
     </div>
   );

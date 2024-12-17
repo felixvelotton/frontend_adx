@@ -1,4 +1,4 @@
-/* Reset básico */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -9,127 +9,98 @@ body {
   font-family: Arial, sans-serif;
   background-color: #000;
   color: #fff;
-  line-height: 1.6;
 }
 
 /* Header */
 .header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: url('/src/assets/Banner.jpg') center/cover no-repeat;
-  padding: 20px;
+  background-size: cover;
+  background-position: center;
   text-align: center;
-  color: white;
+  padding: 40px 20px;
+  color: #f9b600;
 }
 
-.header .adx {
-  font-size: 3rem;
+.branding .logo {
+  width: 80px;
 }
 
-.header .asso {
-  font-size: 1.2rem;
-  margin-top: 10px;
-}
-
-.social-icons img {
-  height: 30px;
-  margin: 10px;
-  transition: transform 0.3s;
-}
-
-.social-icons img:hover {
-  transform: scale(1.1);
-}
-
-/* Menu */
 .menu ul {
+  list-style: none;
   display: flex;
   justify-content: center;
-  list-style: none;
-  background-color: #333;
-}
-
-.menu li {
-  margin: 10px;
 }
 
 .menu a {
   text-decoration: none;
   color: #fff;
-  padding: 10px 15px;
-  transition: background-color 0.3s;
+  margin: 0 10px;
+  font-weight: bold;
+  transition: color 0.3s;
 }
 
 .menu a:hover {
-  background-color: #555;
-  border-radius: 5px;
+  color: #f9b600;
 }
 
 /* Seções */
 .section {
-  padding: 20px;
+  padding: 40px 20px;
   text-align: center;
 }
 
-.section img {
-  max-width: 100%;
-  height: auto;
-  margin-top: 10px;
-}
-
-/* Galeria */
-.gallery {
+.gallery, .projetos-container {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
 }
 
-.gallery img {
-  width: 200px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 10px;
-  transition: transform 0.3s;
+.gallery img, .projeto-item img {
+  width: 300px;
+  border-radius: 5px;
 }
 
-.gallery img:hover {
-  transform: scale(1.05);
+.projeto-item {
+  text-align: center;
+  max-width: 300px;
 }
 
-/* Quem Somos */
-.quem-somos h1, .subsecao h2 {
-  margin-bottom: 10px;
+.cadastro form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.cadastro input, .cadastro button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.cadastro button {
+  background-color: #f9b600;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cadastro button:hover {
+  background-color: #fff;
   color: #f9b600;
-}
-
-.quem-somos p {
-  margin-bottom: 20px;
 }
 
 /* Footer */
 .footer {
+  background-size: cover;
+  background-position: center;
   text-align: center;
-  background-color: #333;
-  padding: 20px;
-  color: #fff;
-  margin-top: 10px;
+  padding: 40px 20px;
+  color: #f9b600;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-  .menu ul {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .gallery img {
-    width: 100%;
-    height: auto;
-  }
-
-  .header .adx {
-    font-size: 2rem;
-  }
+.footer-logo {
+  width: 100px;
+  margin-bottom: 10px;
 }
