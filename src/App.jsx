@@ -1,7 +1,69 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
+  const [formData, setFormData] = useState({
+    nome: '',
+    email: '',
+    celular: '',
+  });
+
+  const [cadastros, setCadastros] = useState([]); // Estado para armazenar os cadastros
+
+  // Atualiza o estado conforme os campos do formulário são preenchidos
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // Envia os dados do formulário ao backend
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('https://backend-adx.vercel.app/cadastros', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        alert('Cadastro realizado com sucesso!');
+        console.log('Novo cadastro:', result);
+
+        // Limpa o formulário
+        setFormData({ nome: '', email: '', celular: '' });
+
+        // Atualiza a lista de cadastros
+        fetchCadastros();
+      } else {
+        alert('Erro ao realizar o cadastro.');
+      }
+    } catch (error) {
+      console.error('Erro ao conectar ao servidor:', error);
+      alert('Erro ao conectar ao servidor.');
+    }
+  };
+
+  // Busca os cadastros do backend
+  const fetchCadastros = async () => {
+    try {
+      const response = await fetch('https://backend-adx.vercel.app/cadastros');
+      const data = await response.json();
+      setCadastros(data);
+    } catch (error) {
+      console.error('Erro ao buscar cadastros:', error);
+    }
+  };
+
+  // Carrega os cadastros assim que a página é carregada
+  useEffect(() => {
+    fetchCadastros();
+  }, []);
+
   return (
     <div>
       {/* Header */}
@@ -66,12 +128,42 @@ function App() {
       {/* Cadastro */}
       <section id="cadastro" className="section cadastro">
         <h2>Cadastro de Alunos</h2>
-        <form>
-          <input type="text" placeholder="Nome" />
-          <input type="email" placeholder="Email" />
-          <input type="text" placeholder="Celular" />
+        <form onSubmit={handleSubmit} className="cadastro-form">
+          <input
+            type="text"
+            name="nome"
+            placeholder="Nome"
+            value={formData.nome}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="text"
+            name="celular"
+            placeholder="Celular"
+            value={formData.celular}
+            onChange={handleChange}
+            required
+          />
           <button type="submit">CADASTRE-SE</button>
         </form>
+
+        <h2>Cadastros Realizados</h2>
+        <ul>
+          {cadastros.map((cadastro) => (
+            <li key={cadastro.id}>
+              {cadastro.nome} - {cadastro.email} - {cadastro.celular}
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* Quem Somos */}
